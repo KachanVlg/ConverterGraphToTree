@@ -3,16 +3,18 @@
 #include <QVector>
 #include <QtCore/QCoreApplication>
 
-
+// ------ класс, описывающий вершину графа ------
 class Vertex {
 public:
-    int id;
-    QVector<int> approachAdjVertexes;
-    QVector<int> outputAdjVertexes;
+    int id; //айди (имя) вершины
+    QVector<int> approachAdjVertexes; //массив имен смежных родительских вершин
+    QVector<int> outputAdjVertexes; //массив имен смежных дочерних узлов
 
-    Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes,  int id);
+    Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes,  int id); //конструктор
 };
 
+
+// ------ конструктор вершины ------
 Vertex::Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes,  int id)
 {
     this->id = id;
@@ -23,21 +25,29 @@ Vertex::Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes, 
 //-----------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------
 
+
+
+
+// ------ класс, описывающий дугу графа ------
 class Edge
 {
 public:
-    Vertex* outcomeVertex;
-    Vertex* approachVertex;
-    Edge(Vertex* outcomeVertex, Vertex* approachVertex);
+    Vertex* outcomeVertex; //вершина-начало дуги
+    Vertex* approachVertex; //вершина-конец дуги
+    Edge(Vertex* outcomeVertex, Vertex* approachVertex); //конструктор
 };
 
 
-
+// ------ конструктор дуги ------
 Edge::Edge(Vertex* outcomeVertex, Vertex* approachVertex)
 {
     this->outcomeVertex = outcomeVertex;
     this->approachVertex = approachVertex;
 }
+
+
+
+
 
 
 
