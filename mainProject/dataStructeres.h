@@ -20,5 +20,26 @@ Vertex::Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes, 
     this->outputAdjVertexes = outputAdjVertexes;
 }
 
+//-----------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
+
+class Edge
+{
+public:
+    Vertex* outcomeVertex;
+    Vertex* approachVertex;
+    Edge(Vertex* outcomeVertex, Vertex* approachVertex);
+};
+
+
+
+Edge::Edge(Vertex* outcomeVertex, Vertex* approachVertex)
+{
+    this->outcomeVertex = outcomeVertex;
+    this->approachVertex = approachVertex;
+}
+
+
+
 
 #endif // DATASTRUCTERES_H
