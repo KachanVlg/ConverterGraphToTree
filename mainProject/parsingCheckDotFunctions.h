@@ -25,4 +25,13 @@ void convertTreeToDot(const QVector<Edge>& deletedEdges, QStringList & recipient
 
 
 
+/*!
+ * \brief Проверяет соответствие объявления и описания графа формату dot
+ * \param graph - dot граф в виде текста
+ * \param список найденных ошибок
+ */
+bool checkDotFormat(QStringList &graph, QVector<QString> &errors);
+
+
+
 #endif // PARSINGCHECKDOTFUNCTIONS_H
