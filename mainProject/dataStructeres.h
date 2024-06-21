@@ -50,17 +50,31 @@ Vertex::Vertex(QVector<int>approachAdjVertexes, QVector<int> outputAdjVertexes, 
 
 
 
-// ------ класс, описывающий дугу графа ------
+/*!
+ * \class Edge
+ * \brief Класс, представляющий дугу в графе
+ *
+ * Класс Edge содержит информацию о дуге графа, а именно о вершине-начале (outcomeVertex)
+ * и вершине-конце дуги (approachVertex)
+ *
+ */
 class Edge
 {
 public:
-    Vertex* outcomeVertex; //вершина-начало дуги
-    Vertex* approachVertex; //вершина-конец дуги
-    Edge(Vertex* outcomeVertex, Vertex* approachVertex); //конструктор
+    Vertex* outcomeVertex; /*!< Вершина-начало дуги */
+    Vertex* approachVertex; /*!< Вершина-конец дуги */
+    Edge(Vertex* outcomeVertex, Vertex* approachVertex); /*!< Конструктор Edge */
 };
 
 
-// ------ конструктор дуги ------
+/*!
+ * \brief Конструктор для класса Edge.
+ *
+ * Инициализирует дугу с заданными вершиной-началом и вершиной-концом
+ *
+ * \param outcomeVertex - вершина-начало дуги
+ * \param approachVertex - вершина конец дуги
+ */
 Edge::Edge(Vertex* outcomeVertex, Vertex* approachVertex)
 {
     this->outcomeVertex = outcomeVertex;
