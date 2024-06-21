@@ -76,3 +76,70 @@ QVector<Vertex*> searchVertexesWithZeroDegreeOfApproach(const QMap <int, Vertex*
 }
 
 
+Vertex* convertGraphToTree(QVector<Edge>& deletedEdges, const QMap<int, Vertex*> &graph)
+{
+    /// Найти все изолированные вершины графа
+    QVector<Vertex*> isolatedVertexes = searchIsolatedVertexes(graph);/*!< список изолированных вершин графа */
+
+    /// Если была найдена хотя-бы одна изолированная вершина, вернуть, что данный граф нельзя преобразовать в дерево.
+    if(isolatedVertexes.size() > 0)
+    {
+        return nullptr;
+    }
+
+
+    QVector<Vertex*> zeroDegreeOfApproachVertexes = searchVertexesWithZeroDegreeOfApproach(graph);/*!< список вершин с нулевой степенью захода */
+
+    int numZeroDegreeOfApproachVertexes = zeroDegreeOfApproachVertexes.size(); /*!< количество вершин с нулевой степенью захода в графе */
+
+
+    QVector <Vertex*> passedVertexes;/*!< пустой список пройденных вершин */
+    int numVertexes = graph.size();/*!< количество вершин в графе */
+    bool rootFound = false; /*!< флаг - корень найден */
+    Vertex* root = nullptr; /*!< указатель на корень дерева (пока пустой) */
+
+    ///Если была найдена 1 вершина с нулевой степенью захода
+    if(numZeroDegreeOfApproachVertexes == 1)
+    {
+        /// Выполняем обход в глубину, начиная с этой вершины;
+        Vertex* startVertex = zeroDegreeOfApproachVertexes.takeFirst();
+        searchTreeDFS(startVertex, passedVertexes, deletedEdges, graph);
+        /// Если во время обхода были пройдены все вершины, считать корнем дерева вершину, с которой начинали обход;
+        if(numVertexes == passedVertexes.size())
+        {
+            root = startVertex;
+        }
+    }
+    /// Иначе Если было найдено более 1 вершины с нулевой степенью захода, вернуть, что данный граф нельзя преобразовать в дерево;
+    else if(numZeroDegreeOfApproachVertexes > 1) return nullptr;
+
+    ///Иначе Если не было найдено ни одной вершины с нулевой степенью захода
+    else if(numZeroDegreeOfApproachVertexes == 0)
+    {
+        QMap<int, Vertex*>::const_iterator iV;
+
+        /// Для каждой вершины графа И пока корень не найден
+        for(iV = graph.constBegin(); iV !=graph.constEnd() && !rootFound; iV++)
+        {
+            /// Выполняем обход в глубину, начиная с текущей вершины;
+            searchTreeDFS(iV.value(), passedVertexes, deletedEdges, graph);
+
+            /// Если во время обхода были пройдены все вершины
+            if(numVertexes == passedVertexes.size())
+            {
+                /// Считать, что корень дерева найден;
+                rootFound = true;
+                /// Считать корнем дерева вершину, с которой начинали текущий обход в глубину
+                root = iV.value();
+            }
+            /// Иначе очистить список дуг, которые нужно удалить
+            else
+            {
+                deletedEdges.clear();
+            }
+        }
+    }
+    ///Вернуть корень дерева
+    return root;
+}
+

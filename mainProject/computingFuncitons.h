@@ -34,6 +34,14 @@ QVector<Vertex*> searchIsolatedVertexes(const QMap<int, Vertex*> &graph);
  */
 QVector<Vertex*> searchVertexesWithZeroDegreeOfApproach(const QMap <int, Vertex*> &graph);
 
+/*!
+ * \brief Преобразовывает граф в дерево, если это возможно, посредством нахождения дуг, которые нужно удалить
+ * \brief и возвращает список этих дуг, а так же корень этого дерева
+ * \param deletedEdges - заполняемый список дуг, которые нужно удалить, чтобы граф стал деревом
+ * \param graph - карта графа, который обходим
+ * \return корень найденного дерева или nullptr, если дерево невозможно построить посредством удаления дуг
+ */
+Vertex* convertGraphToTree(QVector<Edge>& deletedEdges, const QMap<int, Vertex*> &graph);
 
 
 
