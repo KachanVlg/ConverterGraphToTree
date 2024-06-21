@@ -9,6 +9,7 @@ CONFIG += c++17 cmdline
 SOURCES += \
         computingFunctions.cpp \
         dataStructeres.cpp \
+        inputOutputFunctions.cpp \
         main.cpp \
         parsingCheckDotFunctions.cpp
 
@@ -20,4 +21,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     computingFuncitons.h \
     dataStructeres.h \
+    inputOutputFunctions.h \
     parsingCheckDotFunctions.h
