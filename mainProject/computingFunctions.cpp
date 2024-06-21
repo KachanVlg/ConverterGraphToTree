@@ -52,3 +52,25 @@ QVector<Vertex*> searchIsolatedVertexes(const QMap<int, Vertex*> &graph)
     /// Вернуть список изолированных вершин
     return isolatedVertexes;
 }
+
+
+
+QVector<Vertex*> searchVertexesWithZeroDegreeOfApproach(const QMap <int, Vertex*> &graph)
+{
+    QMap<int, Vertex*>::const_iterator iV; /*!< итератор для обхода graph */
+    QVector<Vertex*> zeroDegreeOfApproachVertexes; /*!< пустой список вершин с нулевой степенью захода */
+    /// Для каждой вершины графа
+    for(iV = graph.constBegin(); iV !=graph.constEnd(); iV++)
+    {
+        int degreeOfApproach = iV.value()->approachAdjVertexes.size(); /*!< степень захода вершины */
+        /// Если степень захода текущей вершины нулевая
+        if(degreeOfApproach == 0)
+        {
+            /// Добавить текущую вершину в список вершин с нулевой степенью захода
+            zeroDegreeOfApproachVertexes.append(iV.value());
+        }
+    }
+    /// Вернуть список вершин с нулевой степенью захода
+    return zeroDegreeOfApproachVertexes;
+
+}

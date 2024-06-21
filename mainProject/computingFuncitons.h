@@ -27,6 +27,13 @@ QVector<Vertex*> searchIsolatedVertexes(const QMap<int, Vertex*> &graph);
 
 
 
+/*!
+ * \brief Выполняет поиск вершин с нулевой степенью захода
+ * \param graph - граф
+ * \return список вершин с нулевой степенью захода
+ */
+QVector<Vertex*> searchVertexesWithZeroDegreeOfApproach(const QMap <int, Vertex*> &graph);
+
 
 
 
