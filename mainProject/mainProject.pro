@@ -9,7 +9,8 @@ CONFIG += c++17 cmdline
 SOURCES += \
         computingFunctions.cpp \
         dataStructeres.cpp \
-        main.cpp
+        main.cpp \
+        parsingCheckDotFunctions.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -18,4 +19,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     computingFuncitons.h \
-    dataStructeres.h
+    dataStructeres.h \
+    parsingCheckDotFunctions.h

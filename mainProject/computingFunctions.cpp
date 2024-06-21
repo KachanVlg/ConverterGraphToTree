@@ -74,3 +74,5 @@ QVector<Vertex*> searchVertexesWithZeroDegreeOfApproach(const QMap <int, Vertex*
     return zeroDegreeOfApproachVertexes;
 
 }
+
+
