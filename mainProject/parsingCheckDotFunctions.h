@@ -14,7 +14,13 @@
 void parsingDotGraph(QStringList & dotGraph, QMap<int, Vertex*> & graph);
 
 
-
+/*!
+ * \brief Преобразует исходный граф в дерево dot формата, добавляя к связям индикаторы,
+ * \brief говорящие о том, что их нужно удалить
+ * \param deletedEdges список дуг, которые необходимо удалить
+ * \param recipient текст исходного dot графа (он будет изменен)
+ */
+void convertTreeToDot(const QVector<Edge>& deletedEdges, QStringList & recipient);
 
 
 

@@ -59,3 +59,27 @@ void parsingDotGraph(QStringList & dotGraph, QMap<int, Vertex*> & graph)
         }
     }
 }
+
+
+
+void convertTreeToDot(const QVector<Edge>& deletedEdges, QStringList & recipient)
+{
+    int numEdges = deletedEdges.size(); /*!< количество дуг, которые нужно удалить */
+    QString indicateRed(" [color=red]");
+
+    ///Для каждой связи, которую нужно удалить
+    for(int iEdge = 0; iEdge < numEdges; iEdge++)
+    {
+        /// Создаем строку, которая соответствует связи, что нужно удалить;
+        int v1 = deletedEdges.at(iEdge).outcomeVertex->id;
+        int v2 = deletedEdges.at(iEdge).approachVertex->id;
+        QString input = QString("%1 -> %2").arg(v1).arg(v2);/*!< регулярное выражение, соответствующее связи */
+        /// Ищем эту строку в исходном графе
+        int idCurEdge = recipient.indexOf(input);
+
+        /// Отмечаем через пробел в этой строке необходимость удалить данную связь
+        QString indicateEdge = recipient.at(idCurEdge) + indicateRed;
+        recipient.replace(idCurEdge, indicateEdge);
+    }
+
+}
