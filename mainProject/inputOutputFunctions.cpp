@@ -32,3 +32,20 @@ bool readTextFile(const QString& filePath, QStringList& lines)
     return true;
 }
 
+
+bool outputResultToFile(const QStringList &text, const QString &filepath)
+{
+    /// Открываем файл
+    QFile file(filepath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        return false;
+    }
+    /// Создаём текстовый поток для чтения из файла
+    QTextStream out(&file);
+    for (const QString &line : text) {
+        out << line << "\n";
+    }
+
+    file.close();
+    return true;
+}
