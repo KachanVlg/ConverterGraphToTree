@@ -1,6 +1,6 @@
 #ifndef COMPUTINGFUNCITONS_H
 #define COMPUTINGFUNCITONS_H
-#include <dataStructeres.h>
+#include "dataStructeres.h"
 
 
 

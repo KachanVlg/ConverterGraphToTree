@@ -1,5 +1,4 @@
-#include <dataStructeres.h>
-#include <computingFuncitons.h>
+#include "computingFuncitons.h"
 
 
 void searchTreeDFS(Vertex* startVertex, QVector<Vertex*>& passedVertexes, QVector<Edge>& deletedEdges, const QMap<int, Vertex*>& graph)

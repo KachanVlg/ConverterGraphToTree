@@ -35,7 +35,8 @@ RES_FILE      =
 SED           = $(QMAKE) -install sed
 MOVE          = move
 SUBTARGETS    =  \
-		sub-mainProject
+		sub-mainProject \
+		sub-test_searchTreeDFS
 
 
 sub-mainProject-qmake_all:  FORCE
@@ -63,6 +64,31 @@ sub-mainProject-install_subtargets: FORCE
 sub-mainProject-uninstall_subtargets: FORCE
 	@if not exist mainProject\ mkdir mainProject\ & if not exist mainProject\ exit 1
 	cd mainProject\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
+sub-test_searchTreeDFS-qmake_all:  FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
+	cd test_searchTreeDFS\ && $(MAKE) -f Makefile qmake_all
+sub-test_searchTreeDFS: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
+sub-test_searchTreeDFS-make_first: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
+sub-test_searchTreeDFS-all: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
+sub-test_searchTreeDFS-clean: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
+sub-test_searchTreeDFS-distclean: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
+sub-test_searchTreeDFS-install_subtargets: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
+sub-test_searchTreeDFS-uninstall_subtargets: FORCE
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../../ConverterGraphToTree.pro D:/Qt/6.7.1/mingw_64/mkspecs/win32-g++/qmake.conf D:/Qt/6.7.1/mingw_64/mkspecs/features/spec_pre.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/device_config.prf \
@@ -732,36 +758,48 @@ D:/Qt/6.7.1/mingw_64/mkspecs/features/lex.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\ConverterGraphToTree.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
-qmake_all: sub-mainProject-qmake_all FORCE
+qmake_all: sub-mainProject-qmake_all sub-test_searchTreeDFS-qmake_all FORCE
 
-make_first: sub-mainProject-make_first  FORCE
-all: sub-mainProject-all  FORCE
-clean: sub-mainProject-clean  FORCE
-distclean: sub-mainProject-distclean  FORCE
+make_first: sub-mainProject-make_first sub-test_searchTreeDFS-make_first  FORCE
+all: sub-mainProject-all sub-test_searchTreeDFS-all  FORCE
+clean: sub-mainProject-clean sub-test_searchTreeDFS-clean  FORCE
+distclean: sub-mainProject-distclean sub-test_searchTreeDFS-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-mainProject-install_subtargets FORCE
-uninstall_subtargets: sub-mainProject-uninstall_subtargets FORCE
+install_subtargets: sub-mainProject-install_subtargets sub-test_searchTreeDFS-install_subtargets FORCE
+uninstall_subtargets: sub-mainProject-uninstall_subtargets sub-test_searchTreeDFS-uninstall_subtargets FORCE
 
 sub-mainProject-debug:
 	@if not exist mainProject\ mkdir mainProject\ & if not exist mainProject\ exit 1
 	cd mainProject\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
-debug: sub-mainProject-debug
+sub-test_searchTreeDFS-debug:
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
+debug: sub-mainProject-debug sub-test_searchTreeDFS-debug
 
 sub-mainProject-release:
 	@if not exist mainProject\ mkdir mainProject\ & if not exist mainProject\ exit 1
 	cd mainProject\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
-release: sub-mainProject-release
+sub-test_searchTreeDFS-release:
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
+release: sub-mainProject-release sub-test_searchTreeDFS-release
 
 sub-mainProject-check:
 	@if not exist mainProject\ mkdir mainProject\ & if not exist mainProject\ exit 1
 	cd mainProject\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
-check: sub-mainProject-check
+sub-test_searchTreeDFS-check:
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
+check: sub-mainProject-check sub-test_searchTreeDFS-check
 
 sub-mainProject-benchmark:
 	@if not exist mainProject\ mkdir mainProject\ & if not exist mainProject\ exit 1
 	cd mainProject\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-mainProject-benchmark
+sub-test_searchTreeDFS-benchmark:
+	@if not exist test_searchTreeDFS\ mkdir test_searchTreeDFS\ & if not exist test_searchTreeDFS\ exit 1
+	cd test_searchTreeDFS\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\vladb\Documents\ConverterGraphToTree\test_searchTreeDFS\test_searchTreeDFS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
+benchmark: sub-mainProject-benchmark sub-test_searchTreeDFS-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE

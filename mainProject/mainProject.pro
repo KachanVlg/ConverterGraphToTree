@@ -8,6 +8,7 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         computingFunctions.cpp \
+        dataStructeres.cpp \
         main.cpp
 
 # Default rules for deployment.
