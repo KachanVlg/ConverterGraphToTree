@@ -29,3 +29,26 @@ void searchTreeDFS(Vertex* startVertex, QVector<Vertex*>& passedVertexes, QVecto
         }
     }
 }
+
+
+
+QVector<Vertex*> searchIsolatedVertexes(const QMap<int, Vertex*> &graph)
+{
+    QMap<int, Vertex*>::const_iterator iV; /*!< итератор для обхода graph */
+    QVector<Vertex*> isolatedVertexes; /*!< пустой список изолированных вершин */
+
+    ///Для каждой вершины графа
+    for(iV = graph.constBegin(); iV !=graph.constEnd(); iV++)
+    {
+        int numApproachAdjVertexes = iV.value()->approachAdjVertexes.size(); /*!< количество смежных родительских вершин текущей вершины */
+        int numOutputAdjVertexes = iV.value()->outputAdjVertexes.size(); /*!< количество смежных дочерних вершин текущей вершины */
+        /// Если текущая вершина не имеет смежных родительских и дочерних вершин
+        if(numOutputAdjVertexes == 0 && numApproachAdjVertexes == 0)
+        {
+            /// Добавить текущую вершину в список изолированных вершин
+            isolatedVertexes.append(iV.value());
+        }
+    }
+    /// Вернуть список изолированных вершин
+    return isolatedVertexes;
+}

@@ -18,6 +18,15 @@ void searchTreeDFS(Vertex* startVertex, QVector<Vertex*>& passedVertexes, QVecto
 
 
 
+/*!
+ * \brief Выполняет поиск изолированных вершин в графе
+ * \param graph - граф
+ * \return список изолированных вершин
+ */
+QVector<Vertex*> searchIsolatedVertexes(const QMap<int, Vertex*> &graph);
+
+
+
 
 
 
