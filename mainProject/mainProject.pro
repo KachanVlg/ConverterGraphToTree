@@ -1,5 +1,5 @@
 QT = core
-
+QT += widgets
 CONFIG += c++17 cmdline
 
 # You can make your code fail to compile if it uses deprecated APIs.

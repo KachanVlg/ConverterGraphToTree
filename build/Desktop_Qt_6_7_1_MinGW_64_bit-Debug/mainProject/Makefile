@@ -401,6 +401,8 @@ Makefile: ../../../mainProject/mainProject.pro D:/Qt/6.7.1/mingw_64/mkspecs/win3
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/resources_functions.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/resources.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/moc.prf \
+		D:/Qt/6.7.1/mingw_64/mkspecs/features/win32/opengl.prf \
+		D:/Qt/6.7.1/mingw_64/mkspecs/features/uic.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/qmake_use.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/file_copies.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/testcase_targets.prf \
@@ -408,6 +410,8 @@ Makefile: ../../../mainProject/mainProject.pro D:/Qt/6.7.1/mingw_64/mkspecs/win3
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/yacc.prf \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/lex.prf \
 		../../../mainProject/mainProject.pro \
+		D:/Qt/6.7.1/mingw_64/lib/Qt6Widgets.prl \
+		D:/Qt/6.7.1/mingw_64/lib/Qt6Gui.prl \
 		D:/Qt/6.7.1/mingw_64/lib/Qt6Core.prl \
 		D:/Qt/6.7.1/mingw_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\..\..\mainProject\mainProject.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -742,6 +746,8 @@ D:/Qt/6.7.1/mingw_64/mkspecs/features/qt.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/resources_functions.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/resources.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/moc.prf:
+D:/Qt/6.7.1/mingw_64/mkspecs/features/win32/opengl.prf:
+D:/Qt/6.7.1/mingw_64/mkspecs/features/uic.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/qmake_use.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/file_copies.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/testcase_targets.prf:
@@ -749,6 +755,8 @@ D:/Qt/6.7.1/mingw_64/mkspecs/features/exceptions.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/yacc.prf:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/lex.prf:
 ../../../mainProject/mainProject.pro:
+D:/Qt/6.7.1/mingw_64/lib/Qt6Widgets.prl:
+D:/Qt/6.7.1/mingw_64/lib/Qt6Gui.prl:
 D:/Qt/6.7.1/mingw_64/lib/Qt6Core.prl:
 D:/Qt/6.7.1/mingw_64/mkspecs/features/build_pass.prf:
 qmake: FORCE

@@ -4,7 +4,7 @@
 
 
 
-bool readTextFile(const QString& filePath, QStringList& lines)
+bool getTextFromFile(const QString& filePath, QStringList& lines)
 {
     /// Открываем файл
     QFile file(filePath);
